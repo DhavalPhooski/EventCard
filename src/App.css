@@ -14,7 +14,6 @@ body {
 }
 
 .container {
-  scrollbar-width: none;
   margin-top: 200px;
   display: flex;
   flex-wrap: wrap;
@@ -177,7 +176,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   max-height: 90vh; /* Prevent content overflow */
-  overflow-y: auto; /* Enable scrolling if needed */
+  /* overflow-y: auto; Enable scrolling if needed */
 }
 
 /* Styles for text details */
