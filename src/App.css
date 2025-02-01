@@ -1,13 +1,10 @@
 /* 🌌 Galaxy Background */
-/* 🌌 Ensure Full-Width Without Overflow */
-* {
+body {
+  background: radial-gradient(circle at top, #1a002b, #0a001a);
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Prevents content from overflowing */
-}
-
-html,
-body {
   width: 100%;
   overflow-x: hidden; /* Prevents horizontal scrolling */
 }
@@ -18,14 +15,6 @@ body {
   margin: 0 auto; /* Centers content */
   padding: 20px;
   text-align: center;
-}
-
-body {
-  background: radial-gradient(circle at top, #1a002b, #0a001a);
-  color: #ffffff;
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 /* 🚀 Filter Buttons */
@@ -88,24 +77,45 @@ body {
     0px 0px 40px rgba(0, 255, 255, 0.5);
 }
 
-/* 🛰️ Event Details Modal */
+/* 🌟 Enlarged Full-Screen Event Details */
 .cardDetails {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(10, 10, 30, 0.9);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  background: rgba(10, 10, 30, 0.95); /* Darker background for readability */
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   color: #ffffff;
-  max-width: 500px;
-  width: 90%; /* Ensures responsiveness */
+  max-width: 90vw; /* Covers most of the screen width */
+  max-height: 90vh; /* Covers most of the screen height */
+  width: 90%;
+  height: 90%;
+  overflow-y: auto; /* Allows scrolling if content is too long */
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-/* 📱 Responsive Design (Mobile-Friendly) */
+/* 🚀 Close Button - Adjusted for Larger Modal */
+.cross {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 60px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cross:hover {
+  transform: rotate(90deg) scale(1.2);
+}
+
+/* 🛠️ Responsive Adjustments */
 @media (max-width: 768px) {
   .button-wrapper {
     flex-direction: column;
@@ -125,9 +135,11 @@ body {
   }
 
   .cardDetails {
-    width: 90%;
-    max-width: 90%;
-    font-size: 14px;
+    width: 95%;
+    height: 95%;
+    max-width: 95vw;
+    max-height: 95vh;
+    padding: 20px;
   }
 }
 
@@ -139,17 +151,6 @@ body {
   .button-wrapper button {
     width: 100%;
   }
-}
-
-/* ✨ Close Button - Sci-Fi Style */
-.cross {
-  width: 25px;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
-}
-
-.cross:hover {
-  transform: rotate(90deg) scale(1.2);
 }
 
 /* 🌟 Twinkling Stars Effect */
