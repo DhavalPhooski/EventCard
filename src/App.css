@@ -1,591 +1,166 @@
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-/* Card animation */
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
-body {
-  overflow: hidden;
-  margin: 0;
-  height: 97vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #1a1a1a;
+.container {
+  padding: 20px;
   font-family: Arial, sans-serif;
 }
 
-.container {
-  margin-top: 200px;
+.button-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.button-wrapper button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+}
+
+.button-wrapper button:hover {
+  background-color: #0056b3;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  justify-content: center;
-  width: 100%;
-  max-width: 1200px;
-}
-@media screen and (min-width: 1024px) {
-  .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2%;
-    justify-content: center;
-    overflow-y: auto;
-    height: 100vh;
-  }
-}
-@media screen and (max-width: 600px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 5650px;
-  }
-  .button {
-    height: 0.2em;
-  }
-}
-@media (min-width: 600px) and (max-width: 1024px) {
-  .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2%;
-    justify-content: center;
-    overflow-y: auto;
-    height: 100vh;
-    margin-top: 200px;
-  }
-}
-@media (min-width: 440px) and (max-width: 550px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 6100px;
-  }
-  .button {
-    height: 0.2em;
-  }
-}
-@media (min-width: 550px) and (max-width: 600px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 6350px;
-  }
-  .button {
-    height: 0.2em;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2%;
-    justify-content: center;
-  }
-}
-
-.card:hover {
-  --lightness: 80%;
-  background: #ffffff80;
-  color: #000;
-  outline: 1px solid rgb(255, 255, 255);
-  box-shadow: inset 0 0 80px whitesmoke,
-    inset 20px 0 80px rgba(255, 0, 255, 0.747), inset -20px 0 80px #0ff,
-    inset 20px 0 300px #f0f, inset -20px 0 300px #0ff, 0 0 50px #fff,
-    -10px 0 80px #f0f, 10px 0 80px #0ff;
-  transition: all ease-in-out 0.3s;
 }
 
 .card {
-  text-align: center;
-  padding: 10%;
-  flex: 1 1 200px; /* Flex-grow: 1, Flex-shrink: 1, Basis: 200px */
-  max-width: 300px; /* Ensure no card grows too wide */
-  height: 200px;
-  background-color: rgb(44, 44, 44);
-  position: relative;
-  display: flex;
-  place-content: center;
-  place-items: center;
-  border-radius: 20px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card h2 {
-  z-index: 1;
-  color: white;
-  font-size: 1.5em;
+  margin: 0;
+  font-size: 18px;
+  color: #333;
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  width: 40%;
-  background-image: linear-gradient(
-    180deg,
-    rgb(0, 183, 255),
-    rgb(255, 48, 255)
-  );
-  height: 300%;
-  animation: rotBGimg 3s linear infinite;
-  transition: all 0.2s linear;
-}
-
-@keyframes rotBGimg {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.card::after {
-  content: "";
-  position: absolute;
-  background: #07182e;
-  inset: 5px;
-  border-radius: 15px;
-}
-
-/* Common styles for all card details */
-.cardDetails1,
-.cardDetails2,
-.cardDetails3,
-.cardDetails4,
-.cardDetails5,
-.cardDetails6,
-.cardDetails7,
-.cardDetails8,
-.cardDetails9,
-.cardDetails10,
-.cardDetails11,
-.cardDetails12,
-.cardDetails13 {
-  border-radius: 10px;
-  width: 90%;
-  height: 70%;
-  position: fixed; /* Fixed position to prevent jumping */
-  /* background-color: rgb(0, 0, 0); */
-  z-index: 5;
-  color: #fff;
-  text-shadow: 0 0 10px #fff, 0 0 2px #fff, 0 0 30px #fff, 0 0 40px #1e09dd;
-  text-align: center;
+.cardDetails {
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: 90vh; /* Prevent content overflow */
-  /* overflow-y: auto; Enable scrolling if needed */
-}
-
-/* Styles for text details */
-.text-Detail1,
-.text-Detail2,
-.text-Detail3,
-.text-Detail4,
-.text-Detail5,
-.text-Detail6,
-.text-Detail7,
-.text-Detail8,
-.text-Detail9,
-.text-Detail10,
-.text-Detail11,
-.text-Detail12,
-.text-Detail13 {
-  font-size: 23px;
-  margin-top: 0%;
-  padding: 12%;
-}
-
-/* Styles for animated border box */
-.animated-border-box,
-.animated-border-box-glow {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  overflow: hidden;
-  z-index: 0;
+  background-color: white;
+  padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  max-width: 500px;
+  width: 90%;
 }
 
 .animated-border-box-glow {
-  filter: blur(20px);
+  /* Add your styles for the glow effect */
 }
 
-.animated-border-box:before,
-.animated-border-box-glow:before {
-  content: "";
-  z-index: -2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(0deg);
+.animated-border-box {
+  position: relative;
+}
+
+.cross {
   position: absolute;
-  width: 99999px;
-  height: 99999px;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-image: conic-gradient(
-    rgba(0, 0, 0, 0),
-    #1976ed,
-    rgba(0, 0, 0, 0) 25%
-  );
-  animation: rotate 4s linear infinite;
-}
-
-.animated-border-box:after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 5px;
-  top: 5px;
-  width: calc(100% - 10px);
-  height: calc(100% - 10px);
-  background: #292a2e;
-  border-radius: 7px;
-}
-
-@keyframes rotate {
-  100% {
-    transform: translate(-50%, -50%) rotate(1turn);
-  }
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  cursor: pointer;
 }
 
 .hidden {
   display: none;
-}
-
-/* Blur effect class */
-.blurred {
-  backdrop-filter: blur(200px);
-  /* -webkit-backdrop-filter: blur(500px); */
-  transition: backdrop-filter 0.5s ease, background-color 0.5s ease;
-}
-
-/* .overlay {
-  opacity: 0%;
-  position: absolute;
-  z-index: 4;
-  height: 100%;
+}/* Galaxy Button Styling */
+.galaxy-button {
+  position: relative;
   width: 100%;
-} */
-
-/* Cross button styles */
-.cross1,
-.cross2,
-.cross3,
-.cross4,
-.cross5,
-.cross6,
-.cross7,
-.cross8,
-.cross9,
-.cross10,
-.cross11,
-.cross12,
-.cross13 {
-  transform: translateY(30%);
-  right: 3%;
-  position: absolute;
-  z-index: 10;
-  width: 60px;
-  height: 60px;
+  max-width: 300px;
+  height: 200px;
+  margin: 10px;
+  cursor: pointer;
 }
 
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-/* Card animation (Extended for C14 - C21) */
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+.galaxy-button button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Adding styles for the new card details (C14 - C21) */
-.cardDetails14,
-.cardDetails15,
-.cardDetails16,
-.cardDetails17,
-.cardDetails18,
-.cardDetails19,
-.cardDetails20,
-.cardDetails21 {
-  border-radius: 10px;
-  width: 90%;
-  height: 70%;
-  position: fixed;
-  z-index: 5;
-  color: #fff;
-  text-shadow: 0 0 10px #fff, 0 0 2px #fff, 0 0 30px #fff, 0 0 40px #1e09dd;
+.galaxy-button .text {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  z-index: 2;
   text-align: center;
+}
+
+.galaxy-button .spark,
+.galaxy-button .backdrop,
+.galaxy-button .galaxy__container,
+.galaxy-button .galaxy {
+  position: absolute;
+  inset: 0;
+}
+
+.galaxy-button .spark:before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  aspect-ratio: 1;
+  top: 0%;
+  left: 50%;
+  z-index: -1;
+  translate: -50% -15%;
+  rotate: 0;
+  transform: rotate(-90deg);
+  opacity: 0.4;
+  background: conic-gradient(from 0deg, transparent 0 340deg, white 360deg);
+  transition: opacity 0.25s;
+  animation: rotate 1.8s linear infinite both;
+}
+
+.galaxy-button .star {
+  height: calc(var(--size) * 1px);
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  opacity: var(--alpha);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  max-height: 90vh;
-  overflow-y: auto;
+  transform: translate(-50%, -50%) rotate(10deg) rotate(0deg)
+    translateY(calc(var(--distance) * 1px));
+  animation: orbit calc(var(--duration) * 1s) calc(var(--delay) * -1s) infinite
+    linear;
 }
 
-/* Styles for text details of new cards */
-.text-Detail14,
-.text-Detail15,
-.text-Detail16,
-.text-Detail17,
-.text-Detail18,
-.text-Detail19,
-.text-Detail20,
-.text-Detail21 {
-  font-size: 23px;
-  margin-top: 0%;
-  padding: 12%;
-}
-
-/* Cross button styles for new cards */
-.cross14,
-.cross15,
-.cross16,
-.cross17,
-.cross18,
-.cross19,
-.cross20,
-.cross21 {
-  transform: translateY(30%);
-  right: 3%;
-  position: absolute;
-  z-index: 10;
-  width: 60px;
-  height: 60px;
-}
-
-/* ---------------------------------------------------------------------------------- */
-/* filter buttons! */
-/* ---------------------------------------------------------------------------------- */
-/* From Uiverse.io by DrashtySoni */
-.button-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #1a1a1a; /* Optional, matches your theme */
-  padding: 20px;
-  z-index: 1000; /* Ensure buttons are always on top */
-}
-.button {
-  display: flex;
-  justify-content: center; /* Align buttons in center */
-  gap: 20px;
-  width: 100%;
-  position: fixed; /* Make it stay at the top */
-  top: 0; /* Stick to the top */
-  left: 0;
-  background-color: rgba(33, 33, 33, 0.9); /* Slightly transparent background */
-  padding: 10px 0;
-  z-index: 1000; /* Ensure it stays above other content */
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-  justify-content: space-around; /* Spread buttons evenly */
-}
-
-@media (max-width: 768px) {
-  .button {
-    height: 5em;
-    margin: auto;
-    gap: 10px;
-  }
-
-  .btn {
-    width: 30%; /* Reduce button width on smaller screens */
-    height: 1rem; /* Maintain consistent height */
-  }
-}
-
-@media (max-width: 480px) {
-  .btn {
-    width: 90%; /* Further reduce button width on very small screens */
-    height: 2.5rem; /* Adjust height if needed */
-  }
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 10rem;
-  overflow: hidden;
-  height: 2rem;
-  background-size: 300% 300%;
-  backdrop-filter: blur(1rem);
-  border-radius: 5rem;
-  transition: 0.5s;
-  animation: gradient_301 5s ease infinite;
-  border: double 4px transparent;
-  background-image: linear-gradient(#212121, #212121),
-    linear-gradient(
-      137.48deg,
-      #ffdb3b 10%,
-      #ff9b17d7 45%,
-      #f9ff41 67%,
-      #feb200d7 87%
-    );
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-}
-.btnWorkshop {
-  height: 2rem;
-  width: 10rem;
-}
-.btnTech {
-  height: 2rem;
-  width: 10rem;
-}
-.btnNonTech {
-  height: 2rem;
-  width: 10rem;
-}
-.btnAll {
-  height: 2rem;
-  width: 10rem;
-}
-#container-stars {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  transition: 0.5s;
-  backdrop-filter: blur(1rem);
-  border-radius: 5rem;
-}
-
-strong {
-  z-index: 2;
-  font-family: "Poppins" sans-serif;
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: #ffffff;
-  text-shadow: 0 0 4px rgb(0, 0, 0);
-}
-
-#glow {
-  position: absolute;
-  display: flex;
-  width: 12rem;
-}
-
-.circle {
-  width: 100%;
-  height: 30px;
-  filter: blur(2rem);
-  animation: pulse_3011 4s infinite;
-  z-index: -1;
-}
-
-.circle:nth-of-type(1) {
-  background: rgba(0, 0, 1860 0.936);
-}
-
-.circle:nth-of-type(2) {
-  background: rgba(0, 0, 1860 0.936);
-}
-
-.btn:hover #container-stars {
-  z-index: 1;
-  background-color: #212121;
-}
-
-.btn:hover {
-  transform: scale(1.1);
-}
-
-.btn:active {
-  border: double 4px #fe53bb;
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  animation: none;
-}
-
-.btn:active .circle {
-  background: #fe53bb;
-}
-
-#stars {
-  position: relative;
-  background: transparent;
-  width: 200rem;
-  height: 200rem;
-}
-
-#stars::after {
-  content: "";
-  position: absolute;
-  top: -10rem;
-  left: -100rem;
-  width: 100%;
-  height: 100%;
-  animation: animStarRotate 90s linear infinite;
-}
-
-#stars::after {
-  background-image: radial-gradient(#ffffff 1px, transparent 1%);
-  background-size: 50px 50px;
-}
-
-#stars::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -50%;
-  width: 170%;
-  height: 500%;
-  animation: animStar 60s linear infinite;
-}
-
-#stars::before {
-  background-image: radial-gradient(#ffffff 1px, transparent 1%);
-  background-size: 50px 50px;
-  opacity: 0.5;
-}
-
-@keyframes animStar {
-  from {
-    transform: translateY(0);
-  }
-
+@keyframes orbit {
   to {
-    transform: translateY(-135rem);
+    transform: translate(-50%, -50%) rotate(10deg) rotate(360deg)
+      translateY(calc(var(--distance) * 1px));
   }
 }
 
-@keyframes animStarRotate {
-  from {
-    transform: rotate(360deg);
-  }
-
+@keyframes rotate {
   to {
-    transform: rotate(0);
-  }
-}
-
-@keyframes gradient_301 {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes pulse_3011 {
-  0% {
-    transform: scale(0.75);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
-  }
-
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-  }
-
-  100% {
-    transform: scale(0.75);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    transform: rotate(90deg);
   }
 }
