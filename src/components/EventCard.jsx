@@ -147,7 +147,6 @@ export default function EventCard() {
           </div>
         </div>
 
-        <div className="overlay"></div>
         <div className="card c1 Workshop">
           <h2>IOT Workshop</h2>
         </div>
